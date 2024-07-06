@@ -28,41 +28,36 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <li class="nav-item active">
-                <a
-                
-                  href="dashboard.php"
-                  class="collapsed"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-home"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-section">
-                <span class="sidebar-mini-icon">
-                  <i class="fa fa-ellipsis-h"></i>
-                </span>
-                <h4 class="text-section">Components</h4>
-              </li>
-              <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarLayouts">
-                  <i class="fas fa-user-circle"></i>
-                  <p>Users Management</p>
-                  <span class="caret"></span>
-                </a>
-                <div class="collapse" id="sidebarLayouts">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="users_management.php">
-                        <span class="sub-item">Users</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="admin_management.php">
-                        <span class="sub-item">Admin</span>
-                      </a>
-                    </li>
+            <li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'dashboard.php') echo 'active'; ?>">
+              <a href="dashboard.php" class="collapsed" aria-expanded="false">
+                <i class="fas fa-home"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-section">
+              <span class="sidebar-mini-icon">
+                <i class="fa fa-ellipsis-h"></i>
+              </span>
+              <h4 class="text-section">Components</h4>
+            </li>
+            <li class="nav-item">
+              <a data-bs-toggle="collapse" href="#sidebarLayouts" class="<?php if (in_array(basename($_SERVER['PHP_SELF']), array('users_management.php', 'admin_management.php'))) echo 'active'; ?>">
+                <i class="fas fa-user-circle"></i>
+                <p>Users Management</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse <?php if (in_array(basename($_SERVER['PHP_SELF']), array('users_management.php', 'admin_management.php'))) echo 'show'; ?>" id="sidebarLayouts">
+                <ul class="nav nav-collapse">
+                  <li class="<?php if (basename($_SERVER['PHP_SELF']) == 'users_management.php') echo 'active'; ?>">
+                    <a href="users_management.php">
+                      <span class="sub-item">Users</span>
+                    </a>
+                  </li>
+                  <li class="<?php if (basename($_SERVER['PHP_SELF']) == 'admin_management.php') echo 'active'; ?>">
+                    <a href="admin_management.php">
+                      <span class="sub-item">Admin</span>
+                    </a>
+                  </li>
                   </ul>
                 </div>
               </li>
